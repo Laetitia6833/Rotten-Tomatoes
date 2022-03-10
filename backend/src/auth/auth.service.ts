@@ -45,25 +45,11 @@ export class AuthService {
         }
     }
 
-    // async approved(email, query) {
-    //     const token = query.request_token
-    //     if (query.approved) {
-    //         let req = await this.httpService.post(` https://api.themoviedb.org/3/authentication/guest_session/new?api_key=0b14b5a8dd1b4886f5d2424b5e0ac7bc`,
-    //             // let req = await this.httpService.post(`https://api.themoviedb.org/3/authentication/session/new?api_key=${process.env.API_KEY}`,
-    //             {
-    //                 request_token: token
-    //             }).toPromise()
-    //         const sessionId = req.data.session_id
-    //         const user = await this.userModel.findOne({ email })
-    //         user.sessionId = sessionId
-    //         user.save()
-    //     }
-    // }
 
     async getToken() {
-        // https://api.themoviedb.org/3/authentication/guest_session/new?api_key=0b14b5a8dd1b4886f5d2424b5e0ac7bc
+        // https://api.themoviedb.org/3/authentication/guest_session/new?api_key=?
 
-        let req = await this.httpService.get(`https://api.themoviedb.org/3/authentication/guest_session/new?api_key=0b14b5a8dd1b4886f5d2424b5e0ac7bc`)
+        let req = await this.httpService.get(`https://api.themoviedb.org/3/authentication/guest_session/new?api_key=?)
             .toPromise()
         const requestToken = req.data.guest_session_id;
         return requestToken
